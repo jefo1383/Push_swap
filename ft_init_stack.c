@@ -6,7 +6,7 @@
 /*   By: yafranco <yafranco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:46:58 by yafranco          #+#    #+#             */
-/*   Updated: 2026/01/05 15:50:08 by yafranco         ###   ########.fr       */
+/*   Updated: 2026/01/06 11:35:19 by yafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,28 +48,3 @@ void	ft_fill_stack_a(t_stack *stack_a, int *ranks, int count)
 	stack_a->tail = count - 1;
 }
 
-void	ft_sort_int_tab(int *tab, int size)
-{
-	int	i;
-	int	j;
-	int	tmp;
-
-	i = 0;
-	while (i < size)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (tab[i] > tab[j])
-			{
-				tmp = tab[i];
-				tab[i] = tab[j];
-				tab[j] = tmp;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-char	*ft_normalize_stack()
