@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   benchmark.c                                        :+:      :+:    :+:   */
+/*   ft_init_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yafranco <yafranco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 14:24:17 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/07 13:36:02 by yafranco         ###   ########.fr       */
+/*   Created: 2026/01/05 14:46:58 by yafranco          #+#    #+#             */
+/*   Updated: 2026/01/07 14:13:06 by yafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	is_sorted(t_stack *s)
+t_stack	*ft_init_data(t_data *data, int capacity)
 {
-	int	i;
-	int	current_index;
-	int	next_index;
-
-	i = 0;
-	current_index = s->head;
-	while (i < (s->size - 1))
-	{
-		next_index = (current_index +1) % s->capacity;
-		if (s->values[current_index] > s->values[next_index])
-			return (0);
-		current_index = next_index;
-		i++;
-	}
-	return (1);
+	ft_memset(data, 0, sizeof(t_data));
+	data->b.capacity = capacity;
+	data->b.values = malloc(sizeof(int) * capacity);
+	if (!data->b.values)
+		exit_error(data);
+	data->b.size = 0;
+	data->b.head = 0;
+	data->b.tail = -1;
+	data->b.name = 'b';
 }
-
