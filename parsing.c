@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:09:05 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/07 14:40:19 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/07 16:57:57 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	parse_args(int ac, char **av, t_stack *a)
 	a->size = a->capacity;
 	a->head = 0;
 	a->tail = a->size - 1;
+	a->name = 'a';
 	i = 1;
 	k = 0;
 	while (i < ac)
@@ -92,4 +93,16 @@ void	parse_args(int ac, char **av, t_stack *a)
 		free_split(tab);
 		i++;
 	}
+}
+
+void	ft_init_data(t_data *data, int capacity)
+{
+	data->b.capacity = capacity;
+	data->b.values = malloc(sizeof(int) * capacity);
+	if (!data->b.values)
+		exit_error(data, NULL);
+	data->b.size = 0;
+	data->b.head = 0;
+	data->b.tail = 0;
+	data->b.name = 'b';
 }

@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:16:30 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/07 15:48:27 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/07 17:00:26 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ void	rr(t_data *data, int print);
 void	ft_sort_int_tab(int *tab, int size);
 int		*ft_copy_array(int *raw_tab, int size);
 void	ft_normalize_stack(t_stack *a);
-t_stack	*ft_init_data(t_data *data, int capacity);
-
+void	ft_init_data(t_data *data, int capacity);
 int count_words(char *str);
 int is_sep(char c);
 char **ft_split(char *str);
@@ -70,5 +69,6 @@ int get_val(t_stack *s, int i);
 void	push_circular(t_stack *stack, int value);
 int	pop_circular(t_stack *stack);
 void	swap_stack(t_stack *s);
+void	*ft_memset(void *s, int c, size_t n);
 
 #endif

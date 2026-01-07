@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:23:00 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/07 14:04:20 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/07 16:59:56 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,20 @@ void	swap_stack(t_stack *s)
 	tmp = s->values[idx1];
 	s->values[idx1] = s->values[idx2];
 	s->values[idx2] = tmp;
+}
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*ptr;
+
+	i = 0;
+	ptr = (unsigned char *)s;
+	while (i < n)
+	{
+		*ptr = (unsigned char)c;
+		i++;
+		ptr++;
+	}
+	return (s);
 }
