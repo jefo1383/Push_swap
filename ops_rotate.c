@@ -6,7 +6,7 @@
 /*   By: yafranco <yafranco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:23:39 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/06 15:45:29 by yafranco         ###   ########.fr       */
+/*   Updated: 2026/01/07 14:11:55 by yafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,30 @@ void	ft_rotate(t_stack *s)
 	}
 }
 
-void	ra(t_stack *a)
+void	ra(t_data *data, int print)
 {
-	ft_rotate(a);
-	write(1, "ra\n", 3);
+	ft_rotate(&data->a);
+	data->total_ops++;
+	data->count_ra++;
+	if (print)
+		write(1, "ra\n", 3);
 }
 
-void	rb(t_stack *b)
+void	rb(t_data *data, int print)
 {
-	ft_rotate(b);
-	write(1, "rb\n", 3);
+	ft_rotate(&data->b);
+	data->total_ops++;
+	data->count_rb++;
+	if (print)
+		write(1, "rb\n", 3);
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rr(t_data *data, int print)
 {
-	ft_rotate(a);
-	ft_rotate(b);
-	write(1, "rr\n", 3);
+	ft_rotate(&data->a);
+	ft_rotate(&data->b);
+	data->total_ops++;
+	data->count_rr++;
+	if (print)
+		write(1, "rr\n", 3);
 }

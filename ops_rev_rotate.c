@@ -6,7 +6,7 @@
 /*   By: yafranco <yafranco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:23:53 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/06 15:44:44 by yafranco         ###   ########.fr       */
+/*   Updated: 2026/01/07 14:18:25 by yafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,24 @@ void	ft_rev_rotate(t_stack *s)
 	}
 }
 
-void	rra(t_stack *a)
+void	rra(t_data *data, int print)
 {
-	ft_rev_rotate(a);
-	write(1, "rra\n", 4);
+	ft_rev_rotate(&data->a);
+	if (print)
+		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack *b)
+void	rrb(t_data *data, int print)
 {
-	ft_rev_rotate(b);
-	write(1, "rrb\n", 4);
+	ft_rev_rotate(&data->b);
+	if (print)
+		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_data *data, int print)
 {
-	ft_rev_rotate(a);
-	ft_rev_rotate(b);
-	write(1, "rrr\n", 4);
+	ft_rev_rotate(&data->a);
+	ft_rev_rotate(&data->b);
+	if (print)
+		write(1, "rrr\n", 4);
 }

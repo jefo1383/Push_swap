@@ -6,7 +6,7 @@
 /*   By: yafranco <yafranco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 11:33:46 by yafranco          #+#    #+#             */
-/*   Updated: 2026/01/06 14:45:37 by yafranco         ###   ########.fr       */
+/*   Updated: 2026/01/07 14:50:13 by yafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_get_rank(int value, int *sorted_tab, int size)
 	return (-1);
 }
 
-static void	ft_check_duplicates(int *sorted_tab, int size)
+static void	ft_check_duplicates(t_data *data, int *sorted_tab, int size)
 {
 	int	i;
 
@@ -60,7 +60,7 @@ static void	ft_check_duplicates(int *sorted_tab, int size)
 		if (sorted_tab[i] == sorted_tab[i + 1])
 		{
 			free(sorted_tab);
-			ft_error();
+			error_exit(data, NULL);
 		}
 		i++;
 	}
@@ -83,21 +83,22 @@ int	*ft_copy_array(int *raw_tab, int size)
 	return (tab_copy);
 }
 
-void	ft_normalize_stack(t_stack *a)
+void	ft_normalize_stack(t_data *data)
 {
 	int	*copy;
 	int	i;
 
+	copy = ft_copy_array(data->a.values, data->a.size);
+	if (!copy)
+		error_exit(data, NULL);
+	ft_sort_int_tab(copy, data->a.size);
+	ft_check_duplicates(data, copy, data->a.size);
 	i = 0;
-	copy = ft_copy_array(a->values, a->size);
-	ft_sort_in_tab(copy, a->size);
-	ft_check_duplicates(copy, a->size);
-
-	i = 0;
-	while (i < a->size)
+	while (i < data->a.size)
 	{
-		a->values[i] = ft_get_rank(a->values[i], copy, a->size);
+		data->a.values[i] = ft_get_rank(data->a.values[i], copy, data->a.size);
 		i++;
 	}
 	free(copy);
+	data->disorder = compute_disorder(&data->a);
 }
