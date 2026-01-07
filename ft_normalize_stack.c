@@ -6,7 +6,7 @@
 /*   By: yafranco <yafranco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 11:33:46 by yafranco          #+#    #+#             */
-/*   Updated: 2026/01/06 11:34:40 by yafranco         ###   ########.fr       */
+/*   Updated: 2026/01/06 14:45:37 by yafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	ft_check_duplicates(int *sorted_tab, int size)
 	i = 0;
 	while (i < (size - 1))
 	{
-		if (sorted_tab[i] == sorted_tab[i - 1])
+		if (sorted_tab[i] == sorted_tab[i + 1])
 		{
 			free(sorted_tab);
 			ft_error();
@@ -83,25 +83,21 @@ int	*ft_copy_array(int *raw_tab, int size)
 	return (tab_copy);
 }
 
-int	*ft_normalize_stack(int *raw_tab, int size)
+void	ft_normalize_stack(t_stack *a)
 {
 	int	*copy;
-	int	*ranks;
 	int	i;
 
 	i = 0;
-	copy = ft_copy_array(raw_tab, size);
-	ft_sort_in_tab(copy, size);
-	ft_check_duplicates(copy, size);
-	ranks = malloc(sizeof(int) * size);
-	if (!ranks)
-		return (NULL);
+	copy = ft_copy_array(a->values, a->size);
+	ft_sort_in_tab(copy, a->size);
+	ft_check_duplicates(copy, a->size);
+
 	i = 0;
-	while (i < size)
+	while (i < a->size)
 	{
-		ranks[i] = ft_get_rank(raw_tab[i], copy, size);
+		a->values[i] = ft_get_rank(a->values[i], copy, a->size);
 		i++;
 	}
 	free(copy);
-	return (ranks);
 }
