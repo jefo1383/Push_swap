@@ -6,7 +6,7 @@
 /*   By: yafranco <yafranco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:46:58 by yafranco          #+#    #+#             */
-/*   Updated: 2026/01/07 14:13:06 by yafranco         ###   ########.fr       */
+/*   Updated: 2026/01/07 15:40:49 by yafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ t_stack	*ft_init_data(t_data *data, int capacity)
 		exit_error(data);
 	data->b.size = 0;
 	data->b.head = 0;
-	data->b.tail = -1;
+	data->b.tail = 0;
 	data->b.name = 'b';
 }
