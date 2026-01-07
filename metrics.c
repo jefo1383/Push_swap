@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:24:04 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/05 14:19:56 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/07 14:36:41 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,30 @@
 float	compute_disorder(t_stack *a)
 {
 	long	mistakes;
-	long	total;
-    
-	mistakes = 0;
-	total = 0;
+	long	total_pairs;
+	int		i;
+	int		j;
 
-	for (int i = 0; i < a->size; i++)
+	mistakes = 0;
+	total_pairs = 0;
+	
+	if (a->size < 2)
+		return (0.0f);
+
+	i = 0;
+	while (i < a->size - 1)
 	{
-		for (int j = i + 1; j < a->size; j++)
+		j = i + 1;
+		while (j < a->size)
 		{
-			total++;
+			total_pairs++;
 			if (get_val(a, i) > get_val(a, j))
 				mistakes++;
+			j++;
 		}
+		i++;
 	}
-	if (total == 0) return (0.0f);
-	return ((float)mistakes / total);
+	if (total_pairs == 0)
+		return (0.0f);
+	return ((float)mistakes / (float)total_pairs);
 }

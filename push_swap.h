@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:16:30 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/02 14:29:32 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/07 14:36:03 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,16 @@ typedef struct s_data
     int     total_ops;    // Compteur d'opérations
     int     is_bench;     // 1 si flag --bench actif
 } t_data;
+
+int count_words(char *str);
+int is_sep(char c);
+char **ft_split(char *str);
+void	free_split(char **tab);
+void	error_exit(t_data *data, char **tab);
+void	parse_args(int ac, char **av, t_stack *a);
+int get_val(t_stack *s, int i);
+void	push_circular(t_stack *stack, int value);
+int	pop_circular(t_stack *stack);
+void	swap_stack(t_stack *s);
 
 #endif
