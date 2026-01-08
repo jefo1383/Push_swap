@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:23:53 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/07 17:02:45 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:55:41 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	ft_rev_rotate(t_stack *s)
 {
-	if (s->size > 1)
-	{
-		s->head = (s->head - 1 + s->capacity) % s->capacity;
-		s->tail = (s->tail - 1 + s->capacity) % s->capacity;
-	}
+	if (s->size < 2)
+		return ;
+	s->head = (s->head - 1 + s->capacity) % s->capacity;
 }
 
 void	rra(t_data *data, int print)

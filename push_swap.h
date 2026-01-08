@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:16:30 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/07 17:00:26 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:52:30 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct s_stack
 {
 	int		*values;// Le tableau contenant les rangs
 	int		head;// Index du "haut" de la pile
-	int		tail;// Index du "bas" de la pile (où on écrit le prochain)
 	int		size;// Nombre d'éléments actuels
 	int		capacity;// Taille max allouée (nb total d'args)
 	char	name;// 'a' ou 'b' (pour l'affichage)
@@ -44,31 +43,44 @@ typedef struct s_data
 	int		count_rrb;// Compteur d'opérations rrb
 	int		count_rrr;// Compteur d'opérations rrr
 	int		is_bench;// 1 si flag --bench actif
-	int		disorder;
+	float	disorder;
 }	t_data;
 
-void	ft_rev_rotate(t_stack *s);
-void	rra(t_data *data, int print);
-void	rrb(t_data *data, int print);
-void	rrr(t_data *data, int print);
-void	ft_rotate(t_stack *s);
+// Utils & Stack Basics
+int		get_val(t_stack *s, int i);
+void	push_circular(t_stack *stack, int value);
+int		pop_circular(t_stack *stack);
+void	swap_stack(t_stack *s);
+void	*ft_memset(void *s, int c, size_t n);
+
+// Parsing & Init
+int		count_words(char *str);
+int		is_sep(char c);
+char	**ft_split(char *str);
+void	free_split(char **tab);
+void	error_exit(t_data *data, char **tab);
+void	parse_args(int ac, char **av, t_data *data);
+void	ft_init_data(t_data *data, int capacity);
+void	ft_normalize_stack(t_data *data);
+void	free_data(t_data *data);
+
+// Operations
+void	sa(t_data *data, int print);
+void	sb(t_data *data, int print);
+void	ss(t_data *data, int print);
+void	pa(t_data *data, int print);
+void	pb(t_data *data, int print);
 void	ra(t_data *data, int print);
 void	rb(t_data *data, int print);
 void	rr(t_data *data, int print);
-void	ft_sort_int_tab(int *tab, int size);
-int		*ft_copy_array(int *raw_tab, int size);
-void	ft_normalize_stack(t_stack *a);
-void	ft_init_data(t_data *data, int capacity);
-int count_words(char *str);
-int is_sep(char c);
-char **ft_split(char *str);
-void	free_split(char **tab);
-void	error_exit(t_data *data, char **tab);
-void	parse_args(int ac, char **av, t_stack *a);
-int get_val(t_stack *s, int i);
-void	push_circular(t_stack *stack, int value);
-int	pop_circular(t_stack *stack);
-void	swap_stack(t_stack *s);
-void	*ft_memset(void *s, int c, size_t n);
+void	rra(t_data *data, int print);
+void	rrb(t_data *data, int print);
+void	rrr(t_data *data, int print);
+
+// Metrics
+float	compute_disorder(t_stack *a);
+int		is_sorted(t_stack *stack);
+
+// Algorithms
 
 #endif
