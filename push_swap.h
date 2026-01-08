@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:16:30 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/08 10:52:30 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/08 15:42:54 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <limits.h>
+
+# define MODE_ADAPTIVE 0
+# define MODE_SIMPLE 1
+# define MODE_MEDIUM 2
+# define MODE_COMPLEX 3
 
 typedef struct s_stack
 {
@@ -43,7 +48,8 @@ typedef struct s_data
 	int		count_rrb;// Compteur d'opérations rrb
 	int		count_rrr;// Compteur d'opérations rrr
 	int		is_bench;// 1 si flag --bench actif
-	float	disorder;
+	int		algo_mode;// Stocke le mode choisi
+	float	disorder;// Metrique obligatoire
 }	t_data;
 
 // Utils & Stack Basics
@@ -52,6 +58,8 @@ void	push_circular(t_stack *stack, int value);
 int		pop_circular(t_stack *stack);
 void	swap_stack(t_stack *s);
 void	*ft_memset(void *s, int c, size_t n);
+int		get_min_pos(t_stack *s);
+int		get_max_pos(t_stack *s);
 
 // Parsing & Init
 int		count_words(char *str);
@@ -63,6 +71,7 @@ void	parse_args(int ac, char **av, t_data *data);
 void	ft_init_data(t_data *data, int capacity);
 void	ft_normalize_stack(t_data *data);
 void	free_data(t_data *data);
+void    parse_flags(int *ac, char ***av, t_data *data);
 
 // Operations
 void	sa(t_data *data, int print);
@@ -82,5 +91,9 @@ float	compute_disorder(t_stack *a);
 int		is_sorted(t_stack *stack);
 
 // Algorithms
+void    algo_simple(t_data *data, int print);  // O(n^2)
+void    algo_medium(t_data *data, int print);  // O(n*sqrt(n))
+void    algo_complex(t_data *data, int print); // O(n log n)
+void    algo_adaptive(t_data *data, int print); // Dispatcher intelligent
 
 #endif
