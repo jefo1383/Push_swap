@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 11:33:46 by yafranco          #+#    #+#             */
-/*   Updated: 2026/01/09 15:36:10 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/09 19:23:50 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,5 @@ void	ft_normalize_stack(t_data *data)
 		i++;
 	}
 	free(copy);
+	data->disorder = compute_disorder(&data->a);
 }
