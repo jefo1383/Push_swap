@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:03:30 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/08 16:47:53 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:52:26 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	get_max_pos(t_stack *s)
 	int	max_pos;
 
 	i = 0;
-	max_val = 0;
+	max_val = -2147483648;
 	max_pos = 0;
 	while (i < s->size)
 	{

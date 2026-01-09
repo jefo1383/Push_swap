@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_normalize_stack.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yafranco <yafranco@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 11:33:46 by yafranco          #+#    #+#             */
-/*   Updated: 2026/01/07 14:50:13 by yafranco         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:36:10 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,4 @@ void	ft_normalize_stack(t_data *data)
 		i++;
 	}
 	free(copy);
-	data->disorder = compute_disorder(&data->a);
 }

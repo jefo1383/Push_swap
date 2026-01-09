@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:22:27 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/08 15:28:06 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:17:12 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_data	data;
+	int	print;
 	
 	if (ac < 2)
 		return (0);
@@ -29,5 +30,9 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	data.disorder = compute_disorder(&data.a);
+	if (data.is_bench == 1)
+		print = 0;
+	else
+		print = 1;
 	return (0);
 }

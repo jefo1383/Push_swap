@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:25:22 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/08 17:33:49 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:47:21 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,13 @@ void	selection_sort(t_data *data, int print)
 		min_pos = get_min_pos(&data->a);
 		if (min_pos <= data->a.size / 2)
 		{
-			while (min_pos > 0)
-			{
+			while (min_pos-- > 0)
 				ra(data, print);
-				min_pos--;
-			}
 		}
 		else
 		{
-			while (min_pos < data->a.size)
-			{
+			while (min_pos++ < data->a.size)
 				rra(data, print);
-				min_pos++;
-			}
 		}
 		pb(data, print);
 	}
