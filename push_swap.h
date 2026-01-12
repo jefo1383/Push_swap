@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:16:30 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/08 15:42:54 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/12 09:56:02 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,26 +74,26 @@ void	free_data(t_data *data);
 void    parse_flags(int *ac, char ***av, t_data *data);
 
 // Operations
-void	sa(t_data *data, int print);
-void	sb(t_data *data, int print);
-void	ss(t_data *data, int print);
-void	pa(t_data *data, int print);
-void	pb(t_data *data, int print);
-void	ra(t_data *data, int print);
-void	rb(t_data *data, int print);
-void	rr(t_data *data, int print);
-void	rra(t_data *data, int print);
-void	rrb(t_data *data, int print);
-void	rrr(t_data *data, int print);
+void	sa(t_data *data);
+void	sb(t_data *data);
+void	ss(t_data *data);
+void	pa(t_data *data);
+void	pb(t_data *data);
+void	ra(t_data *data);
+void	rb(t_data *data);
+void	rr(t_data *data);
+void	rra(t_data *data);
+void	rrb(t_data *data);
+void	rrr(t_data *data);
 
 // Metrics
 float	compute_disorder(t_stack *a);
 int		is_sorted(t_stack *stack);
 
 // Algorithms
-void    algo_simple(t_data *data, int print);  // O(n^2)
-void    algo_medium(t_data *data, int print);  // O(n*sqrt(n))
-void    algo_complex(t_data *data, int print); // O(n log n)
-void    algo_adaptive(t_data *data, int print); // Dispatcher intelligent
+void    algo_simple(t_data *data);  // O(n^2)
+void    algo_medium(t_data *data);  // O(n*sqrt(n))
+void    algo_complex(t_data *data); // O(n log n)
+void    algo_adaptive(t_data *data); // Dispatcher intelligent
 
 #endif

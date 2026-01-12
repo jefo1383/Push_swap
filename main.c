@@ -6,16 +6,27 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:22:27 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/09 19:22:15 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/12 09:50:09 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void	run_algo(t_data *data)
+{
+	if (data->algo_mode == MODE_SIMPLE)
+		algo_simple(&data);
+	else if (data->algo_mode == MODE_MEDIUM)
+		algo_medium(&data);
+	else if (data->algo_mode == MODE_COMPLEX)
+		algo_complex(&data);
+	else
+		algo_adaptive(&data);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
-	int	print;
 	
 	if (ac < 2)
 		return (0);
@@ -26,12 +37,14 @@ int	main(int ac, char **av)
 	ft_normalize_stack(&data);
 	if (is_sorted(&data.a))
 	{
+		if (data.is_bench)
+			print_bench(&data);
 		free_data(&data);
 		return (0);
 	}
-	if (data.is_bench == 1)
-		print = 0;
-	else
-		print = 1;
+	run_algo(&data);
+	if (data.is_bench)
+		print_bench(&data);
+	free_data(&data);
 	return (0);
 }

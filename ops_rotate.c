@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:23:39 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/08 10:56:10 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/12 09:52:16 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,27 @@ void	ft_rotate(t_stack *s)
 	s->head = (s->head + 1) % s->capacity;
 }
 
-void	ra(t_data *data, int print)
+void	ra(t_data *data)
 {
 	ft_rotate(&data->a);
 	data->total_ops++;
 	data->count_ra++;
-	if (print)
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
-void	rb(t_data *data, int print)
+void	rb(t_data *data)
 {
 	ft_rotate(&data->b);
 	data->total_ops++;
 	data->count_rb++;
-	if (print)
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
-void	rr(t_data *data, int print)
+void	rr(t_data *data)
 {
 	ft_rotate(&data->a);
 	ft_rotate(&data->b);
 	data->total_ops++;
 	data->count_rr++;
-	if (print)
-		write(1, "rr\n", 3);
+	write(1, "rr\n", 3);
 }

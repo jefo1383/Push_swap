@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:25:34 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/09 19:19:14 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/12 09:56:55 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,26 @@ static int	get_chunk_size(t_data *data)
 	return (chunk_size);
 }
 
-static void	a_to_b(t_data *data, int print, int chunk_size, int *limit)
+static void	a_to_b(t_data *data, int chunk_size, int *limit)
 {
-	pb(data, print);
+	pb(data);
 	if (get_val(&data->b, 0) < (*limit - (chunk_size / 2)))
-		rb(data, print);
+		rb(data);
 	if (data->b.size >= *limit && data->b.size < data->a.capacity)
 		*limit += chunk_size;
 }
 
-static void	b_to_a(t_data *data, int print)
+static void	b_to_a(t_data *data)
 {
 	int	max_pos;
 
 	max_pos = get_max_pos(&data->b);
 	while (max_pos-- > 0)
-		rb(data, print);
-	pa(data, print);
+		rb(data);
+	pa(data);
 }
 
-void    algo_medium(t_data *data, int print)
+void    algo_medium(t_data *data)
 {
 	int	limit;
 	int	chunk_size;
@@ -55,10 +55,10 @@ void    algo_medium(t_data *data, int print)
 	while (data->a.size > 0)
 	{
 		if (get_val(&data->a, 0) < limit)
-			a_to_b(data, print, chunk_size, &limit);
+			a_to_b(data, chunk_size, &limit);
 		else
-			ra(data, print);
+			ra(data);
 	}
 	while (data->b.size > 0)
-		b_to_a(data, print);
+		b_to_a(data);
 }
