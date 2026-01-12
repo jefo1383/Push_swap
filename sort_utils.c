@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:03:30 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/09 18:52:26 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/12 13:28:36 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,23 @@ int	get_max_pos(t_stack *s)
 		i++;
 	}
 	return (max_pos);
+}
+
+int	is_sorted(t_stack *s)
+{
+	int	i;
+	int	current_index;
+	int	next_index;
+
+	i = 0;
+	current_index = s->head;
+	while (i < (s->size - 1))
+	{
+		next_index = (current_index +1) % s->capacity;
+		if (s->values[current_index] > s->values[next_index])
+			return (0);
+		current_index = next_index;
+		i++;
+	}
+	return (1);
 }
