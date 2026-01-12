@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:22:27 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/12 09:50:09 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:58:44 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int	main(int ac, char **av)
 	if (is_sorted(&data.a))
 	{
 		if (data.is_bench)
-			print_bench(&data);
+			print_benchmark_stats(&data);
 		free_data(&data);
 		return (0);
 	}
 	run_algo(&data);
 	if (data.is_bench)
-		print_bench(&data);
+		print_benchmark_stats(&data);
 	free_data(&data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:16:30 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/12 09:56:02 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:57:31 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	swap_stack(t_stack *s);
 void	*ft_memset(void *s, int c, size_t n);
 int		get_min_pos(t_stack *s);
 int		get_max_pos(t_stack *s);
+int		is_sorted(t_stack *stack);
 
 // Parsing & Init
 int		count_words(char *str);
@@ -88,7 +89,7 @@ void	rrr(t_data *data);
 
 // Metrics
 float	compute_disorder(t_stack *a);
-int		is_sorted(t_stack *stack);
+void	print_benchmark_stats(t_data *data);
 
 // Algorithms
 void    algo_simple(t_data *data);  // O(n^2)
