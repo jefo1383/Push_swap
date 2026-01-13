@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:09:05 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/08 10:53:22 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/13 11:01:57 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	ft_atoi_check(const char *str, t_data *data, char **tab)
 	{
 		if (!is_digit(str[i]))
 			error_exit(data, tab);
+		if (result > (LONG_MAX - (str[i] - '0')) / 10)
+    		error_exit(data, tab);
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}

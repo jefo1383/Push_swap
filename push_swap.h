@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:16:30 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/12 14:57:31 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/13 10:24:27 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,11 @@ void	rrr(t_data *data);
 
 // Metrics
 float	compute_disorder(t_stack *a);
-void	print_benchmark_stats(t_data *data);
+void	print_bench(t_data *data);
+void	ft_putnbr_fd(int n);
+void	ft_putstr_fd(char *s);
+void	print_disorder(double disorder);
+
 
 // Algorithms
 void    algo_simple(t_data *data);  // O(n^2)

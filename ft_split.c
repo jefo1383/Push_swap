@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:12:00 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/06 10:08:17 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/13 11:46:21 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int is_sep(char c)
 
 int count_words(char *str)
 {
-    int i = 0;
-    int count = 0;
+    int i;
+    int count;
 
+	i = 0;
+	count = 0;
     while (str[i])
     {
         while (str[i] && is_sep(str[i]))
@@ -33,45 +35,64 @@ int count_words(char *str)
                 i++;
         }
     }
-    return count;
+    return (count);
 }
 
 static char *word_dup(char *str, int start, int end)
 {
     char *word;
-    int i = 0;
+    int i;
 
+	i = 0;
     word = malloc((end - start + 1) * sizeof(char));
     if (!word)
-        return NULL;
-
+        return (NULL);
     while (start < end)
         word[i++] = str[start++];
     word[i] = '\0';
-    return word;
+    return (word);
 }
 
-char **ft_split(char *str)
+static int	fill_tab(char **tab, char *str)
 {
-    int i = 0, w = 0, start;
-    char **tab;
+	int	i;
+	int	w;
+	int	start;
 
-    tab = malloc((count_words(str) + 1) * sizeof(char *));
-    if (!tab)
-        return NULL;
+	i = 0;
+	w = 0;
+	while (str[i])
+	{
+		while (str[i] && is_sep(str[i]))
+			i++;
+		if (str[i])
+		{
+			start = i;
+			while (str[i] && !is_sep(str[i]))
+				i++;
+			tab[w] = word_dup(str, start, i);
+			if (!tab[w])
+			{
+				free_split(tab);
+				return (0);
+			}
+			w++;
+		}
+	}
+	tab[w] = NULL;
+	return (1);
+}
 
-    while (str[i])
-    {
-        while (str[i] && is_sep(str[i]))
-            i++;
-        if (str[i])
-        {
-            start = i;
-            while (str[i] && !is_sep(str[i]))
-                i++;
-            tab[w++] = word_dup(str, start, i);
-        }
-    }
-    tab[w] = NULL;
-    return tab;
+char	**ft_split(char *str)
+{
+	char	**tab;
+
+	if (!str)
+		return (NULL);
+	tab = malloc((count_words(str) + 1) * sizeof(char *));
+	if (!tab)
+		return (NULL);
+	if (!fill_tab(tab, str))
+		return (NULL);
+	return (tab);
 }

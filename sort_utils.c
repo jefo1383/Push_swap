@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:03:30 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/12 13:28:36 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/13 11:46:59 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_min_pos(t_stack *s)
 	i = 0;
 	min_val = 2147483647;
 	min_pos = 0;
-	while(i < s->size)
+	while (i < s->size)
 	{
 		if (get_val(s, i) < min_val)
 		{

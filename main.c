@@ -6,7 +6,7 @@
 /*   By: jfoeller <jeremy.foeller@learner.42.tec    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 14:22:27 by jfoeller          #+#    #+#             */
-/*   Updated: 2026/01/12 14:58:44 by jfoeller         ###   ########.fr       */
+/*   Updated: 2026/01/13 10:49:22 by jfoeller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	run_algo(t_data *data)
 {
 	if (data->algo_mode == MODE_SIMPLE)
-		algo_simple(&data);
+		algo_simple(data);
 	else if (data->algo_mode == MODE_MEDIUM)
-		algo_medium(&data);
+		algo_medium(data);
 	else if (data->algo_mode == MODE_COMPLEX)
-		algo_complex(&data);
+		algo_complex(data);
 	else
-		algo_adaptive(&data);
+		algo_adaptive(data);
 }
 
 int	main(int ac, char **av)
@@ -38,13 +38,13 @@ int	main(int ac, char **av)
 	if (is_sorted(&data.a))
 	{
 		if (data.is_bench)
-			print_benchmark_stats(&data);
+			print_bench(&data);
 		free_data(&data);
 		return (0);
 	}
 	run_algo(&data);
 	if (data.is_bench)
-		print_benchmark_stats(&data);
+		print_bench(&data);
 	free_data(&data);
 	return (0);
 }
