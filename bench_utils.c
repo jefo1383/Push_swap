@@ -6,7 +6,7 @@
 /*   By: yafranco <yafranco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 16:52:37 by yafranco          #+#    #+#             */
-/*   Updated: 2026/01/07 17:11:03 by yafranco         ###   ########.fr       */
+/*   Updated: 2026/01/13 13:26:29 by yafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	ft_putnbr_fd(int n)
 	}
 	if (nbr > 9)
 	{
-		ft_putnbr(nbr / 10);
-		ft_putnbr(nbr % 10);
+		ft_putnbr_fd(nbr / 10);
+		ft_putnbr_fd(nbr % 10);
 	}
 }
 
